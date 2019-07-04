@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Rock, Paper, Scissors</title>
+
+</head>
+
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+
+    <script>
+        let gameNum = window.prompt("How many games of \"Rock, Paper, Scissors\" would you like to play?", "");
+        if (gameNum.match(/[^0-9]/g)) {
+            alert("Please type a number next time.");
+            console.log("Please type a number next time.");
+            exit();
+        }
+        var yourScore = 0;
+        var compScore = 0;
+        var numOfGames = 0;
+        var i
+        for (let i = 0; i < parseInt(gameNum); i++) {
+            let x = window.prompt("Rock, Paper, or Scissors?", "");
+            let computerValue = Math.floor(Math.random() * 3);
+            //Note: 0 is Rock, 1 is Paper, 2 is Scissors.
+            if ((x.match(/rock/i) || x == 'r') && (computerValue === 2)) {
+                yourScore++; numOfGames++;
+                alert("You played Rock. Computer played Scissors. So, you win that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Rock. Computer played Scissors. So, you win that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/scissors/i) || x == 's') && (computerValue === 1)) {
+                yourScore++; numOfGames++;
+                alert("You played Scissors. Computer played Paper. So, you win that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Scissors. Computer played Paper. So, you win that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/paper/i) || x == 'p') && (computerValue === 0)) {
+                yourScore++; numOfGames++;
+                alert("You played Paper. Computer played Rock. So, you win that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Paper. Computer played Rock. So, you win that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/rock/i) || x == 'r') && (computerValue === 1)) {
+                compScore++; numOfGames++;
+                alert("You played Rock. Computer played Paper. So, computer wins that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Rock. Computer played Paper. So, computer wins that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/scissors/i) || x == 's') && (computerValue === 0)) {
+                compScore++; numOfGames++;
+                alert("You played Scissors. Computer played Rock. So, computer wins that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Scissors. Computer played Rock. So, computer wins that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/paper/i) || x == 'p') && (computerValue === 2)) {
+                compScore++; numOfGames++;
+                alert("You played Paper. Computer played Scissors. So, computer wins that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Paper. Computer played Scissors. So, computer wins that round! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/rock/i) || x == 'r') && (computerValue === 0)) {
+                numOfGames++;
+                alert("You played Rock. Computer played Rock. So, it's a tie! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Rock. Computer played Rock. So, it's a tie! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/paper/i) || x == 'p') && (computerValue === 1)) {
+                numOfGames++;
+                alert("You played Paper. Computer played Paper. So, it's a tie! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Paper. Computer played Paper. So, it's a tie! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else if ((x.match(/scissors/i) || x == 's') && (computerValue === 2)) {
+                numOfGames++;
+                alert("You played Scissors. Computer played Scissors. So, it's a tie! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You played Scissors. Computer played Scissors. So, it's a tie! You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+            else {
+                compScore++; numOfGames++;
+                alert("You forfeit that round. Please type something intelligible next time. You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+                console.log("You forfeit that round. Please type something intelligible next time. You: " + yourScore + "; Computer: " + compScore + "; Games played: " + numOfGames + ".");
+            }
+        }
+
+        if (yourScore > compScore) {
+            alert("You win the match!");
+            console.log("You win the match!");
+        }
+        else if (compScore > yourScore) {
+            alert("Computer wins the match!");
+            console.log("Computer wins the match!");
+        }
+        else if (yourScore == compScore) {
+            alert("Match is a tie!");
+            console.log("Match is a tie!")
+        }
+        else {
+            alert("Huh? I guess there's no result.");
+            console.log("Huh? I guess there's no result.")
+        }
+
+        document.getElementById("demo").innerHTML = "Your Final Score: " + yourScore + ".";
+        console.log("Your Final Score: " + yourScore + ".");
+        document.getElementById("demo1").innerHTML = "The Computer's Final Score: " + compScore + ".";
+        console.log("The Computer's Final Score: " + compScore + ".")
+        document.getElementById("demo2").innerHTML = "Total number of games: " + numOfGames + ".";
+        console.log("Total number of games: " + numOfGames + ".")
+
+    </script>
